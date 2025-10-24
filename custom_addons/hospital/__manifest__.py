@@ -10,6 +10,8 @@
         "views/patient_views.xml",
         "views/appointment_views.xml",
         "views/consultation_views.xml",
+        "views/patient_chronic_condition_views.xml",
+        "views/patient_allergy_views.xml",
         "views/menu.xml",
     ]
 }

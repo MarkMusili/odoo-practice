@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="menu_hospital_root" name="Hospital Management System">
-        <menuitem id="menu_patients" action="action_hospital_patient"/>
-        <menuitem id="menu_appointment" action="action_hospital_appointment"/>
-        <menuitem id="menu_consultation" action="action_hospital_consultation"/>
+    <menuitem id="hospital_menu_root" name="Hospital Management System">
+        <menuitem id="patient_menu_action" action="action_hospital_patient"/>
+        <menuitem id="appointment_menu_action" action="action_hospital_appointment"/>
+        <menuitem id="consultation_menu_action" action="action_hospital_consultation"/>
+        <menuitem id="menu_settings_menu_root" name="Settings">
+            <menuitem id="menu_allegies_menu_action" action="action_patient_allergy"/>
+            <menuitem id="menu_chronic_condition_menu_action" action="action_patient_chronic_condition"/>
+        </menuitem>
     </menuitem>
 </odoo>

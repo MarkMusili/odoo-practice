@@ -17,67 +17,70 @@
                     <field name="gender" string="Gender"/>
                     <field name="phone" string="Phone"/>
                     <field name="email" string="Email"/>
-                    <field name="state" string="Status" widget="badge"
-                        decoration-muted="state == 'new'"
-                        decoration-info="state == 'under_treatment'"
-                        decoration-success="state == 'discharged'"
-                        decoration-primary="state == 'admitted'"
-                        decoration-warning="state == 'deceased'"
-                    />
                     <field name="date_of_birth" string="Date of birth" optional='hide'/>
+                    <field name="active" string="Active" widget="boolean_toggle"/>
                 </list>
             </field>
         </record>
 
-        <record id="hospital_patient_form_view" model="ir.ui.view">
-            <field name="name">hospital.patient.form</field>
-            <field name="model">hospital.patient</field>
-            <field name="arch" type="xml">
-                <form string="Patient">
-                    <header>
-                        <button name="admitted" string="Admit" type="object" class="btn-info"/>
-                        <button name="under_treatment" string="Active" type="object" class="btn-primary"/>
-                        <button name="discharged" string="Discharge" type="object" class="btn-success"/>
-                        <button name="deceased" string="Deceased" type="object" class="btn-warning"/>
-                        <button name="book_appointment" string="Book An Appointment" type="object" class="btn-primary" icon="fa-calendar"/>
-                        <field name="state" widget="statusbar" statusbar_visible="new,under_treatment,admitted,discharged,deceased"/>
-                    </header>
-                    <sheet>
-                        <div class="oe_button_box" name="button_box">
-                            <button name="action_view_appointments" type="object" class="oe_stat_button" icon="fa-calendar">
-                                <field name="appointment_count" widget="statinfo" string="Appointments"/>
-                            </button>
-                        </div>
-                        <group>
-                            <group>
-                                <field name="name" string="Name" />
-                                <field name="gender" string="Gender"/>
-                                <field name="date_of_birth" string="Date of birth"/>
-                                <field name="age" string="Age"/>
-                                <field name="email" string="Email" widget="email"/>
-                                <field name="phone" string="Phone" widget="phone"/>
-                                <field name="address" string="Address"/>
-                            </group>
-                            <group>
-                                <field name="photo" widget='image' class="oe_avatar" string="Patient Photo"/>
-                                <field name="allergies" string="Allergies"/>
-                                <field name="blood_type" string="Blood Type"/>
-                                <field name="chronic_conditions" string="Chronic Conditions"/>
-                                <field name="emergency_contact" string="Emergency Contact"/>
-                            </group>
+    <record id="hospital_patient_form_view" model="ir.ui.view">
+        <field name="name">hospital.patient.form</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <form string="Patient">
+                <header>
+                    <button name="book_appointment" string="Book An Appointment" type="object" class="btn-primary" icon="fa-calendar"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_appointments" type="object" class="oe_stat_button" icon="fa-calendar">
+                            <field name="appointment_count" widget="statinfo" string="Appointments"/>
+                        </button>
+                    </div>
+
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Patient Name" class="o_text_overflow"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group string="Personal Information">
+                            <field name="photo" widget="image" class="oe_avatar" string="Patient Photo"/>
+                            <field name="gender"/>
+                            <field name="date_of_birth"/>
+                            <field name="age"/>
+                            <field name="blood_type"/>
                         </group>
-                        <notebook>
-                            <page string="Patient Medical records">
-                                <tree delete="false">
-                                    <field name="consultation_ids" string="EMR" options="{'no_delete': True}"/>
-                                </tree>
-                            </page>
-                        </notebook>
-                    </sheet>
-                    <chatter open_attachments="true"/>
-                </form>
-            </field>
-        </record>
+                        <group string="Contact Information">
+                            <field name="email" widget="email"/>
+                            <field name="phone" widget="phone"/>
+                            <field name="address"/>
+                            <field name="emergency_contact"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <group string="Allergies">
+                            <field name="allergies" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                        </group>
+                        <group string="Chronic Conditions">
+                            <field name="chronic_conditions" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Medical Records" name="medical_records">
+                            <tree delete="false" editable="bottom">
+                                <field name="consultation_ids" string="Medical Records" options="{'no_delete': True}"/>
+                            </tree>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter open_attachments="true"/>
+            </form>
+        </field>
+    </record>
 
     </data>
 </odoo>

@@ -1,7 +1,6 @@
 from logging import raiseExceptions
 from dateutil.relativedelta import relativedelta
 from odoo import api, fields, models
-from email_validator import validate_email, EmailNotValidError
 
 
 class HospitalPatient(models.Model):
@@ -29,36 +28,14 @@ class HospitalPatient(models.Model):
     phone = fields.Char(string='Phone')
     address = fields.Char(string='Address')
     emergency_contact = fields.Char(string='Emergency Contact')
-    allergies = fields.Text(string='Allergies')
-    chronic_conditions = fields.Text(string='Chronic Conditions')
     active =  fields.Boolean(default=True)
-    state = fields.Selection([
-        ('new', 'New'),
-        ('admitted', 'Admitted'),
-        ('under_treatment', 'Under Treatment'),
-        ('discharged', 'Discharged'),
-        ('deceased', 'Deceased')
-    ], string="Status", default='new', tracking=True)
 
     appointments_ids = fields.One2many('hospital.appointment', 'patient_id', string='Appointments')
     appointment_count = fields.Integer(compute='_compute_appointment_count')
     consultation_ids = fields.One2many('hospital.consultation', 'patient_id', string='Patient Records')
+    allergies = fields.Many2many('hospital.patient.allergy', string="Allergies")
+    chronic_conditions = fields.Many2many('hospital.patient.chronic_condition', string="Chronic Conditions")
 
-    def under_treatment(self):
-        for record in self:
-            record.state = 'under_treatment'
-
-    def admitted(self):
-        for record in self:
-            record.state = 'admitted'
-
-    def discharged(self):
-        for record in self:
-            record.state = 'discharged'
-
-    def deceased(self):
-        for record in self:
-            record.state = 'deceased'
 
     def _compute_appointment_count(self):
         for record in self:

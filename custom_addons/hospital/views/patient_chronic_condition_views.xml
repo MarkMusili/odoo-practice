@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="action_patient_chronic_condition" model="ir.actions.act_window">
+            <field name="name">Chronic Condition</field>
+            <field name="res_model">hospital.patient.chronic_condition</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <record id="patient_chronic_condition_list_view" model="ir.ui.view">
+            <field name="name">patient.chronic_condition.tree</field>
+            <field name="model">hospital.patient.chronic_condition</field>
+            <field name="arch" type="xml">
+                <list  string="Chronic Conditions">
+                    <field name="name" string="Name"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="patient_chronic_condition_form_view" model="ir.ui.view">
+            <field name="name">patient.chronic_condition.form</field>
+            <field name="model">hospital.patient.chronic_condition</field>
+            <field name="arch" type="xml">
+                <form string="Chronic Condition">
+                    <sheet>
+                        <group>
+                            <field name="name" string="Name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
