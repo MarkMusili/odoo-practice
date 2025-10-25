@@ -5,7 +5,7 @@ from odoo import api, fields, models
 
 class HospitalPatient(models.Model):
     _name = "hospital.patient"
-    _inherit = ['mail.thread']
+    _inherit = ['mail.thread', 'image.mixin']
     _description = "Patient Data"
 
     name = fields.Char(string="Patient Name", tracking=True)
@@ -23,7 +23,6 @@ class HospitalPatient(models.Model):
         ('O+', 'O+'),
         ('O-', 'O-')
     ], string='Blood Type')
-    photo = fields.Image(string='Patient Profile Image')
     email = fields.Char(string='Email')
     phone = fields.Char(string='Phone')
     address = fields.Char(string='Address')

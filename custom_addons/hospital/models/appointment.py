@@ -24,6 +24,7 @@ class HospitalAppointment(models.Model):
         tracking=True,
     )
     notes = fields.Text(string='Notes')
+    active =  fields.Boolean(default=True)
 
     def confirm(self):
         for rec in self:

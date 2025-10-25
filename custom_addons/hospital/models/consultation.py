@@ -17,6 +17,7 @@ class HospitalConsultation(models.Model):
     symptoms = fields.Text(string="Patient Symptoms", tracking=True)
     diagnosis = fields.Text(string="Diagnosis", tracking=True)
     treatment_plan = fields.Text(string="Summary of Treatment")
+    active =  fields.Boolean(default=True)
     notes = fields.Text(string="Notes")
     state = fields.Selection([
         ('draft', 'Draft'),
