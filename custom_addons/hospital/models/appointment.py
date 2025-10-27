@@ -5,10 +5,7 @@ class HospitalAppointment(models.Model):
     _inherit = ['mail.thread']
     _description = "Hospital Appointments"
 
-    name = fields.Char(string="Reference",
-            tracking=True,
-            compute='_compute_reference'
-    )
+    name = fields.Char(string="Reference",tracking=True,compute='_compute_reference', inverse="_inverse_reference")
     patient_id = fields.Many2one('hospital.patient', string='Patient', required=True)
     doctor_id = fields.Many2one("res.partner", string="Doctor", tracking=True)
     consultation_id = fields.One2many("hospital.consultation", 'appointment_id', string='Medical Records')
@@ -47,9 +44,18 @@ class HospitalAppointment(models.Model):
         for record in self:
             if record.patient_id.name:
                 record.name = f"{record.patient_id.name}'s Appointment"
+            else:
+                record.name = "New Appointment"
+
+    def _inverse_reference(self):
+        for record in self:
+            if record.patient_id.name:
+                record.name = f"{record.patient_id.name}'s Appointment"
+
 
     def consult(self):
         self.ensure_one()
+        self.state = 'done'
         return {
             'type': 'ir.actions.act_window',
             'name': 'Consult',

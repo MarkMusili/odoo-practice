@@ -36,6 +36,7 @@
                         <button name="done" string="Mark Done" type="object" class="btn-success" invisible="state == 'done'"/>
                         <button name="reset" string="Reset" type="object" class="btn-warning" invisible="state == 'in_progress'"/>
                         <button name="generate_invoice" string="Invoice" type="object" class="btn-info" invisible="state in ('draft','in_progress')"/>
+                        <button name="%(action_emr_report)d" string="Print Report" type="action" class="btn-primary" icon="fa-file-pdf-o"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,in_progress,done"/>
                     </header>
                     <sheet>

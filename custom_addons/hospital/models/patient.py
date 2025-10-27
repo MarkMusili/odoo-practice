@@ -2,7 +2,6 @@ from logging import raiseExceptions
 from dateutil.relativedelta import relativedelta
 from odoo import api, fields, models
 
-
 class HospitalPatient(models.Model):
     _name = "hospital.patient"
     _inherit = ['mail.thread', 'image.mixin']

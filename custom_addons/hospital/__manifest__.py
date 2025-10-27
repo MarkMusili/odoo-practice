@@ -7,6 +7,7 @@
     ],
     "data": [
         "security/ir.model.access.csv",
+        "reports/patient_reports.xml",
         "views/patient_views.xml",
         "views/appointment_views.xml",
         "views/consultation_views.xml",

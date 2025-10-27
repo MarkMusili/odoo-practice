@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_emr_report" model="ir.actions.report">
+            <field name="name">Patient EMR Report</field>
+            <field name="model">hospital.consultation</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">hospital.patient_emr_report</field>
+            <field name="report_file">hospital.patient_emr_report</field>
+            <field name="print_report_name">'EMR report - %s' % (object.patient_id.name or 'Attendee').replace('/','')</field>
+            <field name="binding_model_id" ref="model_hospital_consultation"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <template id="patient_emr_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="patient">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <h2>Electronic Medical Record</h2>
+                            <p>Patient Name: <span t-field="patient.patient_id"/></p>
+                            <p>Doctor: <span t-field="patient.doctor_id"/></p>
+                            <p>Date: <span t-field="patient.date"/></p>
+                            <p>Symptoms: <span t-field="patient.symptoms"/></p>
+                            <p>Diagnosis: <span t-field="patient.diagnosis"/></p>
+                            <p>Treatment Plan: <span t-field="patient.treatment_plan"/></p>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+
+    </data>
+</odoo>

@@ -12,7 +12,7 @@ class HospitalAccount(models.Model):
 
         if self.invoice_generated:
             raise UserError(_("An Invoice has already been generated for this consultation. You cannot generate another invoice"))
-            
+
         self.env['account.move'].create({
             'name': f"{self.patient_id.name}'s Invoice",
             'partner_id': self.patient_id.partner_id.id,
