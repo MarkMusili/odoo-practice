@@ -25,6 +25,8 @@ class HospitalConsultation(models.Model):
         ('done', 'Done')
     ], string="Status")
 
+
+    medicine_line_ids = fields.one2many('hospital.medicine.line', 'consultation_id', string='Medicines')
     def confirm(self):
         for record in self:
             record.state = 'in_progress'
