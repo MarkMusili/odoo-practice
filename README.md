@@ -8,3 +8,4 @@ This module provides a complete solution for managing hospital operations includ
 - **Patient Registration and Management**: Collection and management of basic patient details.
 - **Appointment Scheduling**: Booking and management of patient appointments.
 - **Medical Consultation**: Management of patient medical records and consultation details.
+- **Invoicing for Consultations and Medicines**: Consultation fees and prescribed medicine lines are automatically included in the generated invoice for each consultation.
