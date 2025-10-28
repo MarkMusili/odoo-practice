@@ -4,3 +4,4 @@ hospital.access_hospital_appoinment,access_hospital_appoinment,hospital.model_ho
 hospital.access_hospital_consultation,access_hospital_consultation,hospital.model_hospital_consultation,base.group_user,1,1,1,1
 hospital.access_patient_allergy,access_patient_allergy,hospital.model_hospital_patient_allergy,base.group_user,1,1,1,1
 hospital.access_patient_chronic_condition,access_patient_chronic_condition,hospital.model_hospital_patient_chronic_condition,base.group_user,1,1,1,1
+hospital.access_hospital_medicine_line,access_hospital_medicine_line,hospital.model_hospital_medicine_line,base.group_user,1,1,1,1

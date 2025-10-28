@@ -53,6 +53,9 @@
                                 <field name="treatment_plan" string="Summary of Treatment"/>
                             </group>
                             <notebook>
+                                <page string="Medicines">
+                                    <field name="medicine_line_ids"/>
+                                </page>
                                 <page string="Doctor's Notes">
                                     <field name="notes" string="Notes"/>
                                 </page>

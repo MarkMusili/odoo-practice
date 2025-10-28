@@ -26,7 +26,7 @@ class HospitalConsultation(models.Model):
     ], string="Status")
 
 
-    medicine_line_ids = fields.one2many('hospital.medicine.line', 'consultation_id', string='Medicines')
+    medicine_line_ids = fields.One2many('hospital.medicine.line', 'consultation_id', string='Medicines')
     def confirm(self):
         for record in self:
             record.state = 'in_progress'
@@ -47,3 +47,6 @@ class HospitalConsultation(models.Model):
     def _compute_title(self):
         for record in self:
             record.name = f"{record.patient_id.name}'s Consultation"
+
+    def action_view_invoices(self):
+        return False

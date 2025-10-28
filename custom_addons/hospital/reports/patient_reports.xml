@@ -24,6 +24,7 @@
                             <p>Symptoms: <span t-field="patient.symptoms"/></p>
                             <p>Diagnosis: <span t-field="patient.diagnosis"/></p>
                             <p>Treatment Plan: <span t-field="patient.treatment_plan"/></p>
+                            <p>Medicines: <span t-field="patient.medicine_line_ids"/></p>
                         </div>
                     </t>
                 </t>
