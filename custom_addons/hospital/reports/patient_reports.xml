@@ -17,20 +17,105 @@
                 <t t-foreach="docs" t-as="patient">
                     <t t-call="web.external_layout">
                         <div class="page">
-                            <h2>Electronic Medical Record</h2>
-                            <p>Patient Name: <span t-field="patient.patient_id"/></p>
-                            <p>Doctor: <span t-field="patient.doctor_id"/></p>
-                            <p>Date: <span t-field="patient.date"/></p>
-                            <p>Symptoms: <span t-field="patient.symptoms"/></p>
-                            <p>Diagnosis: <span t-field="patient.diagnosis"/></p>
-                            <p>Treatment Plan: <span t-field="patient.treatment_plan"/></p>
-                            <p>Medicines: <span t-field="patient.medicine_line_ids"/></p>
+                            <div class="container">
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <h2 class="mb-1">Electronic Medical Record</h2>
+                                        <small class="text-muted">Consultation Summary</small>
+                                        <hr class="mt-2 mb-3"/>
+                                    </div>
+                                </div>
+
+                                <div class="row g-3">
+                                    <div class="col-6">
+                                        <div class="card border-0">
+                                            <div class="card-body p-0">
+                                                <h5 class="mb-2">Patient</h5>
+                                                <p class="mb-1"><strong>Name:</strong> <span t-field="patient.patient_id"/></p>
+                                                <p class="mb-1"><strong>Doctor:</strong> <span t-field="patient.doctor_id"/></p>
+                                                <p class="mb-1"><strong>Date:</strong> <span t-field="patient.date"/></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="card border-0">
+                                            <div class="card-body p-0">
+                                                <h5 class="mb-2">Visit Details</h5>
+                                                <p class="mb-1"><strong>Symptoms:</strong></p>
+                                                <p class="mb-2"><span t-field="patient.symptoms"/></p>
+                                                <p class="mb-1"><strong>Diagnosis:</strong></p>
+                                                <p class="mb-0"><span t-field="patient.diagnosis"/></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="my-3"/>
+
+
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="mb-2">Treatment Plan</h5>
+                                        <div class="border rounded p-2">
+                                            <span t-field="patient.treatment_plan"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-3">
+                                    <div class="col">
+                                        <h5 class="mb-2">Medicines</h5>
+                                        <table class="table table-sm table-striped align-middle">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th style="width:45%">Medicine</th>
+                                                    <th class="text-end" style="width:15%">Qty</th>
+                                                    <th class="text-end" style="width:20%">Unit Price</th>
+                                                    <th class="text-end" style="width:20%">Subtotal</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <t t-foreach="patient.medicine_line_ids" t-as="line">
+                                                    <tr>
+                                                        <td>
+                                                            <t t-esc="line.name or (line.product_id and line.product_id.display_name)"/>
+                                                        </td>
+                                                        <td class="text-end">
+                                                            <t t-esc="line.quantity"/>
+                                                        </td>
+                                                        <td class="text-end">
+                                                            <t t-esc="line.price_unit"/>
+                                                        </td>
+                                                        <td class="text-end">
+                                                            <t t-esc="line.subtotal"/>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                                <t t-if="not patient.medicine_line_ids">
+                                                    <tr>
+                                                        <td colspan="4" class="text-center text-muted">No medicines prescribed</td>
+                                                    </tr>
+                                                </t>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <t t-if="patient.notes">
+                                    <div class="row mt-3">
+                                        <div class="col">
+                                            <h5 class="mb-2">Doctor's Notes</h5>
+                                            <div class="border rounded p-2">
+                                                <span t-field="patient.notes"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
                         </div>
                     </t>
                 </t>
             </t>
         </template>
-
-
     </data>
 </odoo>
