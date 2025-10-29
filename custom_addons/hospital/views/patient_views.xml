@@ -4,16 +4,16 @@
         <record id="action_hospital_patient" model="ir.actions.act_window">
             <field name="name">Patients</field>
             <field name="res_model">hospital.patient</field>
-            <field name="view_mode">list,form</field>
+            <field name="view_mode">tree,form</field>
         </record>
 
-        <record id="hospital_patient_list_view" model="ir.ui.view">
+        <record id="hospital_patient_tree_view" model="ir.ui.view">
             <field name="name">hospital.patient.tree</field>
             <field name="model">hospital.patient</field>
             <field name="arch" type="xml">
-                <list string="Patients">
+                <tree string="Patients">
                     <field name="image_128" widget="image" string="Photo"
-                    options="{'size': [24, 24]'img_class': 'o_avatar rounded'}" width="30" nolabel="1"
+                    options="{'size': [24, 24], 'img_class': 'o_avatar rounded'}" width="30" nolabel="1"
                     class="oe_avatar"/>
                     <field name="name" string="Name" class="o_text_overflow"/>
                     <field name="age" string="Age"/>
@@ -21,7 +21,7 @@
                     <field name="phone" string="Phone"/>
                     <field name="email" string="Email"/>
                     <field name="date_of_birth" string="Date of birth" optional='hide'/>
-                </list>
+                </tree>
             </field>
         </record>
 
@@ -48,7 +48,7 @@
                                         <field name="age"/> years old • <field name="gender"/>
                                     </div>
                                 </div>
-                                <field name="image_1920" widget="contact_image" string="Patient Photo" options="{'size': [130, 130]}"/>
+                                <field name="image_1920" widget="image" string="Patient Photo" options="{'size': [130, 130]}"/>
                             </div>
                             <group>
                                 <group string="Personal Information">

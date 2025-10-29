@@ -59,6 +59,7 @@ class HospitalAccount(models.Model):
 
 
     def generate_invoice(self):
+        self.write({'state': 'done'})
         return self._create_invoice()
 
     def action_view_invoices(self):

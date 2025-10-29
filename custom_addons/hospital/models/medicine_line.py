@@ -1,4 +1,3 @@
-from typing_extensions import ReadOnly
 from odoo import fields, models, api
 
 class HospitalMedicineLine(models.Model):

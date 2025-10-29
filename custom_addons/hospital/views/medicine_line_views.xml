@@ -4,20 +4,20 @@
         <record id="action_medicine" model="ir.actions.act_window">
             <field name="name">Medicines</field>
             <field name="res_model">hospital.medicine.line</field>
-            <field name="view_mode">list,form</field>
+            <field name="view_mode">tree,form</field>
         </record>
 
-        <record id="medicine_line_list_view" model="ir.ui.view">
+        <record id="medicine_line_tree_view" model="ir.ui.view">
             <field name="name">patient.medicine.line.tree</field>
             <field name="model">hospital.medicine.line</field>
             <field name="arch" type="xml">
-                <list  string="Medicines">
+                <tree  string="Medicines">
                     <field name="product_id" string="Medicine"/>
                     <field name="name" string="Description"/>
                     <field name="quantity" string="Quantity"/>
                     <field name="price_unit" string="Price Unit"/>
                     <field name="subtotal" string="Subtotal" readonly='1'/>
-                </list>
+                </tree>
             </field>
         </record>
 
@@ -33,7 +33,7 @@
                         </group>
                         <group>
                             <field name="quantity" string="Quantity"/>
-                            <field name="price_unit" string="Price Unit" readonly='1'/>
+                            <field name="price_unit" string="Price Unit"/>
                             <field name="subtotal" string="Subtotal" readonly='1'/>
                         </group>
                     </sheet>

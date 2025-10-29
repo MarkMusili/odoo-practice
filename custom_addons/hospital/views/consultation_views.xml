@@ -4,14 +4,14 @@
         <record id="action_hospital_consultation" model="ir.actions.act_window">
             <field name="name">EMR</field>
             <field name="res_model">hospital.consultation</field>
-            <field name="view_mode">list,form</field>
+            <field name="view_mode">tree,form</field>
         </record>
 
-        <record id="hospital_consultation_list_view" model="ir.ui.view">
+        <record id="hospital_consultation_tree_view" model="ir.ui.view">
             <field name="name">hospital.consultation.tree</field>
             <field name="model">hospital.consultation</field>
             <field name="arch" type="xml">
-                <list create="false" string="Electronic Medical Records"
+                <tree create="false" string="Electronic Medical Records"
                         decoration-muted="state == 'draft'"
                         decoration-info="state == 'in_progress'"
                         decoration-success="state == 'done'">
@@ -23,7 +23,7 @@
                         decoration-muted="state == 'draft'"
                         decoration-info="state == 'in_progress'"
                         decoration-success="state == 'done'"/>
-                </list>
+                </tree>
             </field>
         </record>
 
