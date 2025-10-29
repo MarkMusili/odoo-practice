@@ -101,6 +101,29 @@
                                     </div>
                                 </div>
 
+                                <div class="row mt-2">
+                                    <div class="col">
+                                        <div class="d-flex justify-content-end">
+                                            <table class="table table-sm w-auto mb-0">
+                                                <tbody>
+                                                    <tr>
+                                                        <th class="text-end pe-3">Consultation Fee:</th>
+                                                        <td class="text-end">
+                                                            <span t-field="patient.consultation_fee"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="text-end pe-3">Total:</th>
+                                                        <td class="text-end">
+                                                            <span t-field="patient.amount_total"/>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <t t-if="patient.notes">
                                     <div class="row mt-3">
                                         <div class="col">

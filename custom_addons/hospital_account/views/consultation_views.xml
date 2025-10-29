@@ -13,6 +13,14 @@
                         </button>
                     </div>
                 </xpath>
+                <xpath expr="//notebook" position="after">
+                    <group class='oe_subtotal_footer'>
+                        <label for="amount_total" string="Total:"/>
+                        <div>
+                            <field name="amount_total" widget="monetary" readonly="1"/>
+                        </div>
+                    </group>
+                </xpath>
             </field>
         </record>
     </data>

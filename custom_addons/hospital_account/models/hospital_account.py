@@ -1,3 +1,5 @@
+from email.policy import default
+from locale import currency
 from odoo import fields, models, api
 from odoo.exceptions import UserError
 from datetime import datetime
@@ -13,6 +15,17 @@ class HospitalAccount(models.Model):
     invoice_generated = fields.Boolean(string="Invoice Generated", default=False)
     invoice_line_ids = fields.One2many('account.move.line', 'consultation_id', string="Invoice Lines")
     invoice_count = fields.Integer(compute="_compute_invoice_count")
+    currency_id = fields.Many2one('res.currency', string="Currency", default=lambda self: self.env.company.currency_id)
+    amount_total = fields.Monetary(string="Total", compute="_compute_amount", currency_field="currency_id", store=True)
+    consultation_fee = fields.Monetary(default=500.0)
+
+
+    @api.depends('medicine_line_ids.quantity', 'medicine_line_ids.price_unit')
+    def _compute_amount(self):
+        for record in self:
+            lines_total = sum(line.quantity * line.price_unit for line in record.medicine_line_ids)
+            total = lines_total + 500.0
+            record.amount_total = total
 
     @api.depends('invoice_line_ids')
     def _compute_invoice_count(self):
