@@ -76,10 +76,10 @@ class HospitalAccount(models.Model):
         return self._create_invoice()
 
     def action_view_invoices(self):
-        action = self.env.ref('account.action_move_out_invoice_type').read()[0]
-        action['domain'] = [
-            ('invoice_line_ids.consultation_id', '=', self.id)
-        ]
-
-        action.pop('res_id', None)
-        return action
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'View Invoices',
+            'res_model': 'account.move',
+            'view_mode': 'list',
+            'domain': [('invoice_line_ids.consultation_id', '=', self.id)],
+        }

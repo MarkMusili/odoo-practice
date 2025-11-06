@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="hospital_dashboard.HospitalDashboard">
+        <Layout display="display">
+            <div class="d-flex flex-wrap">
+                <DashboardItem title="'Total Number of Patients'" content="statistics.total_patients"/>
+                <DashboardItem title="'Total Number of Appointments'" content="statistics.total_appointments"/>
+                <PieChart data="statistics.patients_by_gender"/>
+            </div>
+        </Layout>
+    </t>
+
+</templates>

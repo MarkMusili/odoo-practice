@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <record model="ir.actions.client" id="action_hospital_dashboard">
+      <field name="name">Hospital Dashboard</field>
+      <field name="tag">hospital_dashboard.HospitalDashboard</field>
+    </record>
+
+    <menuitem name="Hospital Dashboard" id="hospital_dashboard.menu_root" action="action_hospital_dashboard"/>
+  </data>
+</odoo>

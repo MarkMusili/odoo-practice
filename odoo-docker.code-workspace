@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "../../../../odoo-docker"
+		},
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../odoo"
+		},
+		{
+			"path": "../../../../tutorials"
+		}
+	],
+    "settings": {}
+}
